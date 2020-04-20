@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Playlist</title>
+  <link rel="stylesheet" href="styles.css">
+  <script
+  src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="functions.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+  .regresar{
+    box-shadow: 1px 1px 1px;
+    padding: .5% 3.5%;
+    background-color: gray;
+    color: black;
+    text-decoration: none;
+    margin-left: 11%;
+    font-size: 15px;
+    position: absolute;
+    
+}
+.regresar:hover{
+    box-shadow: 0px 0px 0px;
+    background-color: #373c3c;
+    color: #000000;
+}
+
+	 #play{
+     display:flex;
+     justify-content:space-around;
+     
+		 
+		 
+   }
+	.mejs-container .mejs-controls { background: #932 !important; }
+	
+body{
+background-image: url("../1.jpg");
+background-size: 100%;
+}
+
+#player{
+  width: 100%;
+}
+
+
+#playlist, audio{
+  width:100%;
+  padding:20px;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration:none;
+}
+.active a {
+  color:#3FDBFC;
+  text-decoration:none;
+}
+li a{
+background-color:;
+color:#FFFFFF;
+padding:10px 12px;
+display:block;
+  
+}
+
+a{
+  border:solid 0.5px;
+  border-top:none;
+  border-left:none;
+  border-right:none;
+}
+
+
+li a:hover{
+  text-decoration:none;
+}
+
+	.audio{
+		width: 50%;
+	}
+	
+	.image{
+		border-radius:48%;
+-webkit-border-radius:48%;
+box-shadow: 0px 0px 15px 15px;
+-webkit-box-shadow: 0px 0px 15px 15px;
+	}
+	
+	.image{
+		animation-duration: 90s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+	}
+		
+		@keyframes slidein {
+  from {
+    margin-left: 10%;
+    width: 350px
+  }
+
+  to {
+    margin-left: 0%;
+    width: 350px;
+  }
+}
+	@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+}
+	
+
+   /* MENU PRRON*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight');
+
+*{
+    box-sizing: border-box;
+}
+
+
+
+header{
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  padding: 15px;
+  z-index: 2;
+}
+
+#menu_on{
+  display: block;
+  width:30px;
+  height: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+#menu_on span{
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  background: #fff;
+  transition: all 0.25s ease;
+  transform-origin : 0px 100%;
+}
+
+#menu_on span:nth-child(2){
+  top: calc(50% - 2px);
+}
+
+#menu_on span:nth-child(3){
+bottom: 0;
+} 
+  .visible_menu span:nth-child(1){
+    transform: rotate(45deg) translate(-2px,1px); 
+  }
+
+  .visible_menu span:nth-child(2){
+    opacity: 0;
+  }
+
+
+  .visible_menu span:nth-child(3){
+    transform: rotate(-45deg) translate(-3px,3px); 
+  }
+
+nav{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left:-300px;
+  width: 300px;
+  z-index: 1;
+  padding: 90px 30px 30px;
+  background: #68C5DB;
+  opacity: 0;
+  transition: all 0.75s ease;
+  font-size: 1.2em;
+  overflow-y: auto;
+}
+/*elimina esta mierda   position: fixed;*/
+.visible_menu{
+}
+
+.visible_menu nav{
+  left: 0;
+  opacity: 1;
+}
+
+nav a{
+  display:block;
+  text-decoration: none;
+  padding: 10px;
+  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: all ease 0.25s;
+}
+
+nav a:hover{
+  color: rgba(255,255,255,1);
+  border-bottom-color:rgba(255,255,255,0.4);
+}
+
+#content{
+  padding:250px 8%;
+  left:800px;
+        top:330px;
+  height: 100vh;
+  position: fixed;
+  display: table;
+  width: 100%;
+  transition: all 0.75s ease;
+
+}
+
+/*traslate se tiene que quitar para arreglar el menu*/
+.visible_menu #content{
+transform: translateX(260px);
+
+}
+
+h1{
+  font-size: 2em;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+
+#content a{
+        font-family: "Times New Roman", Times, serif;
+  font-size: 15PX;
+  text-decoration: none;
+  display: inline-block;
+
+  color: WHITE;
+
+}
+
+#content a:hover{
+  color: red;
+}
+
+a img{
+  width: 16px;
+  height: 16px;
+  opacity: 0.5
+}
+
+#content a:hover img{
+  opacity: 1;
+}
+  p{font-size: 30px;
+  color: rgba(60,227,19,1.00);
+  }
+div{ font-size: 15px; }
+
+</style>
+</head>
+
+<body><!--
+<section>
+    <header id="#header">
+      <a href="#" id="menu_on">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </header>
+    <nav> 
+      <ul>
+        <li><a href="../paulina musica/paginapri/Pagina1.html">Inicio</a></li>
+        <li><a href="../moy/Album.html">Álbum de la semana</a></li>
+        <li><a href="Playlist1.html">Playlist1</a></li>
+        <li><a href="Playlist2.html">Playlist2</a></li>
+        <li><a href="../paulina musica/eventos/Eventos.html">Eventos</a></li>
+        <li><a href="../camisa anime 2.html">Merch</a></li>
+        <li><a href="http://www.politecnica.sems.udg.mx/">Ayuda</a></li>
+      </ul>
+    </nav>
+  </section>
+  
+</section>
+
+<iframe src="mas.html" width: 100%;" style="border: none; position:fixed; top:0;width:30%;  left:1150px;bottom: 0; z-index:3" height="50">
+</iframe>-->
+
+	<br><br><br><br>
+	<section id="play">
+  <div id="imagen"><img class="image" width=300px height=300px src="Jojos/Jojo_OVA_OST1.jpg">
+  
+  
+  
+  </div>
+  <div class="audio">
+  
+  
+  
+<audio id="audio" preload="auto" tabindex="0" controls=""  >
+  <source src="Jojos/sono-chi-no-sadame-jojos-traducido-al-espanol.mp3">
+</audio>
+
+<ul id="playlist">
+        <li class="active">
+           <a href="Jojos/sono-chi-no-sadame-jojos-traducido-al-espanol.mp3">
+             Sono Chi No Sadame
+           </a>
+        </li>
+        <li>
+            <a href="Jojos/01. BLOODY STREAM.mp3">
+              Bloody Stream
+            </a>
+        </li>
+        <li>
+            <a href="Jojos/jojos-op-3-full-stand-proud.mp3">
+               Stand-Proud
+            </a>
+        </li>
+        <li>
+            <a href="Jojos/jojos-bizarre-adventure-op4-full-sono-chi-no-kioku-end-of-the-world-cover-espanol.mp3">
+                End Of The World
+            </a>
+        </li>
+        <li>
+            <a href="Jojos/jojos-bizarre-adventure-opening-5-full-crazy-noisy-bizarre-town.mp3">
+              Crazy Noisy Bizarre
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/01 - Kodou.mp3">
+                Koduo
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/02 - Seijaku no Kanata.mp3">
+               Seijaku no Kanata
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/03 - Konshin no Yuuki.mp3">
+               Konshin no Yuuki
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/04 - Yuujou.mp3">
+               Yuujou
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/05 - Shisen Kara no Kikan.mp3">
+               Shisen Kara no Kikan
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/06 - Fushigi na Houmonsha.mp3">
+               Fushigi na Houmonsha
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/07 - Shissou.mp3">
+              Shissou
+            </a>
+        </li>
+	<li>
+            <a href="Jojos/08 - Sendou Dukai.mp3">
+               Sendou Dukai
+            </a>
+        </li>
+	
+	
+    </ul>
+    </div>
+  </section>
+	
+<script src="js/Play.js"></script>
+<a href="../index.html" class="regresar" >REGRESAR</a>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Playlist</title>
+<link rel="stylesheet" href="styles.css">
+  <script
+  src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="functions.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+	
+	 #play{
+     display:flex;
+     justify-content:space-around;
+		 
+		 
+   }
+	.mejs-container .mejs-controls { background: #932 !important; }
+	
+body{
+background-image: url("waifu_collage_by_webkinzannie123_d8vnw84-fullview2.jpg");
+background-size: 100%;
+}
+
+#player{
+  width: 100%;
+}
+
+
+#playlist, audio{
+  width:100%;
+  padding:20px;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration:none;
+}
+.active a {
+  color:#3FDBFC;
+  text-decoration:none;
+}
+li a{
+background-color:;
+color:#FFFFFF;
+padding:10px 12px;
+display:block;
+  
+}
+
+a{
+  border:solid 0.5px;
+  border-top:none;
+  border-left:none;
+  border-right:none;
+}
+
+
+li a:hover{
+  text-decoration:none;
+}
+
+	.audio{
+		width: 50%;
+	}
+	
+	.image{
+		border-radius:48%;
+-webkit-border-radius:48%;
+box-shadow: 0px 0px 15px 15px;
+-webkit-box-shadow: 0px 0px 15px 15px;
+	}
+	
+	.image{
+		animation-duration: 90s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+	}
+		
+		@keyframes slidein {
+  from {
+    margin-left: 10%;
+    width: 350px
+  }
+
+  to {
+    margin-left: 0%;
+    width: 350px;
+  }
+}
+	@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+}
+
+
+
+ /* MENU PRRON*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight');
+
+*{
+    box-sizing: border-box;
+}
+
+
+
+header{
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  padding: 15px;
+  z-index: 2;
+}
+
+#menu_on{
+  display: block;
+  width:30px;
+  height: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+#menu_on span{
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  background: #fff;
+  transition: all 0.25s ease;
+  transform-origin : 0px 100%;
+}
+
+#menu_on span:nth-child(2){
+  top: calc(50% - 2px);
+}
+
+#menu_on span:nth-child(3){
+bottom: 0;
+} 
+  .visible_menu span:nth-child(1){
+    transform: rotate(45deg) translate(-2px,1px); 
+  }
+
+  .visible_menu span:nth-child(2){
+    opacity: 0;
+  }
+
+
+  .visible_menu span:nth-child(3){
+    transform: rotate(-45deg) translate(-3px,3px); 
+  }
+
+nav{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left:-300px;
+  width: 300px;
+  z-index: 1;
+  padding: 90px 30px 30px;
+  background: #68C5DB;
+  opacity: 0;
+  transition: all 0.75s ease;
+  font-size: 1.2em;
+  overflow-y: auto;
+}
+/*elimina esta mierda   position: fixed;*/
+.visible_menu{
+}
+
+.visible_menu nav{
+  left: 0;
+  opacity: 1;
+}
+
+nav a{
+  display:block;
+  text-decoration: none;
+  padding: 10px;
+  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: all ease 0.25s;
+}
+
+nav a:hover{
+  color: rgba(255,255,255,1);
+  border-bottom-color:rgba(255,255,255,0.4);
+}
+
+#content{
+  padding:250px 8%;
+  left:800px;
+        top:330px;
+  height: 100vh;
+  position: fixed;
+  display: table;
+  width: 100%;
+  transition: all 0.75s ease;
+
+}
+
+/*traslate se tiene que quitar para arreglar el menu*/
+.visible_menu #content{
+
+}
+
+h1{
+  font-size: 2em;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+p{
+  font-size: 1.5em;
+  opacity: 0.82;
+  line-height: 1.2em;
+  margin-bottom: 60px;
+  color: rgba(0,0,0,0.3);
+}
+
+#content a{
+        font-family: "Times New Roman", Times, serif;
+  font-size: 15PX;
+  text-decoration: none;
+  display: inline-block;
+
+  color: WHITE;
+
+}
+
+#content a:hover{
+  color: red;
+}
+
+a img{
+  width: 16px;
+  height: 16px;
+  opacity: 0.5
+}
+
+#content a:hover img{
+  opacity: 1;
+}
+
+
+</style>
+</head>
+
+<body>
+    <section>
+    <header id="#header">
+      <a href="#" id="menu_on">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </header>
+    <nav> 
+      <ul>
+        <li><a href="../paulina musica/paginapri/Pagina1.html">Inicio</a></li>
+        <li><a href="../moy/Album.html">Álbum de la semana</a></li>
+        <li><a href="Playlist1.html">Playlist1</a></li>
+        <li><a href="Playlist2.html">Playlist2</a></li>
+        <li><a href="../paulina musica/eventos/Eventos.html">Eventos</a></li>
+        <li><a href="../camisa anime 2.html">Merch</a></li>
+        <li><a href="http://www.politecnica.sems.udg.mx/">Ayuda</a></li>
+      </ul>
+    </nav>
+  </section>
+
+
+<iframe src="mas.html" width: 100%;" style="border: none; position:fixed; top:0;width:30%;  left:1150px;bottom: 0; z-index:3" height="50">
+</iframe>
+
+  <br><br><br><br><br><br><br>
+	<section id="play">
+  <div id="imagen"><img class="image" width=300px height=300px src="images.jpg">
+  
+  
+  
+  </div>
+  <div class="audio">
+  
+  
+  
+<audio id="audio" preload="auto" tabindex="0" controls=""  >
+  <source src="Hora de Aventura/Adventure Time   Island Song With Lyrics.mp3">
+</audio>
+
+<ul id="playlist">
+        <li class="active">
+           <a href="Hora de Aventura/Adventure Time   Island Song With Lyrics.mp3">
+             Island Song
+           </a>
+        </li>
+        <li>
+            <a href="Hora de Aventura/Rebecca Sugar   Time Adventure (Sub Esp)[2].mp3">
+              Time Adventure
+            </a>
+        </li>
+        <li>
+            <a href="Hora de Aventura/♫ Learn How To Make Bacon Pancakes  ♫.mp3">
+               Learn How To Make Bacon Pancakes
+            </a>
+        </li>
+        <li>
+            <a href="Hora de Aventura/Waving to You.mp3">
+                End Of The World
+            </a>
+        </li>
+        <li>
+            <a href="Hora de Aventura/I Remember You (From Adventure Time) (1).mp3">
+                I Remember You
+            </a>
+        </li>
+	<li>
+            <a href="Hora de Aventura/Everything Stays - Adventure TimeLyric.mp3">
+               Everything Stays
+            </a>
+        </li>
+	<li>
+            <a href="Hora de Aventura/Hora de aventura incendio cancion de Jake LATINO (1).mp3">
+               Incendio cancion de Jake
+            </a>
+        </li>
+	<li>
+            <a href="Hora de Aventura/Fry Song  Rebecca Sugar  HDA Sub. ESPAÑOL.mp3">
+               Fry Song
+            </a>
+        </li>
+	
+    </ul>
+    </div>
+  </section>
+	
+<script src="js/Play.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prototipe</title>
+<style>
+	
+	 .Play{
+     display:flex;
+     justify-content:space-around;
+	}
+body{
+background-image: url("waifu_collage_by_webkinzannie123_d8vnw84-fullview2.jpg");
+}
+
+#player{
+  width: 100%;
+}
+
+
+#playlist, audio{
+  width:100%;
+  padding:20px;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration:none;
+}
+.active a {
+  color:#3FDBFC;
+  text-decoration:none;
+}
+li a{
+background-color:;
+color:#FFFFFF;
+padding:10px 12px;
+display:block;
+  
+}
+
+a{
+  border:solid 0.5px;
+  border-top:none;
+  border-left:none;
+  border-right:none;
+}
+
+
+li a:hover{
+  text-decoration:none;
+}
+
+	#imagen{
+		
+	}
+	
+	.Audio{
+		width: 50%;
+	}
+	
+</style>
+</head>
+
+<body>
+	<br><br><br><br><br><br>
+	<section class="Play">
+		<div id="imagen"><img width=350px height=300px src="Jojos/Jojo_OVA_OST1.jpg">
+  
+  
+  
+  </div>
+	<div class="Audio">
+	<audio id="audio" preload="auto" tabindex="0" controls="" >
+  <source src="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/01%20-%20Crusader%20Prelude.mp3">
+</audio>
+<ul id="playlist">
+        <li class="active">
+           <a href="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/01%20-%20Crusader%20Prelude.mp3">
+             Saxon - Crusader Prelude
+           </a>
+        </li>
+        <li>
+            <a href="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/03%20-%20Little%20Bit%20Of%20What%20You%20Fancy.mp3">
+                Saxon - Little Bit Of What You Fancy
+            </a>
+        </li>
+        <li>
+            <a href="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/04%20-%20Sailing%20To%20America.mp3">
+                Saxon - Sailing To America
+            </a>
+        </li>
+        <li>
+            <a href="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/05%20-%20Set%20Me%20Free.mp3">
+                Saxon - Set Me Free
+            </a>
+        </li>
+        <li>
+            <a href="https://s3-us-west-2.amazonaws.com/allmetalmixtapes/Saxon%20-%201984%20-%20Crusader/06%20-%20Just%20Let%20Me%20Rock.mp3">
+                Saxon - Just Let Me Rock
+            </a>
+        </li>
+    </ul>
+	<script src="play2.js"></script>
+	</div>
+	</section>
+</body>
+</html>
